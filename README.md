@@ -50,8 +50,8 @@ See contract with events at: [etherscan](0x6c6Bd21c0F6b2a535F45B117f9dB1Bc843457
         uint256 proposalVotes
     );
 ```
-- We can see the address of the voter in topic 1, and the proposal voted for in topic 2. 
-- The data shows the weight and proposalVotes.
+- We can see the address of the voter in topic 1, and the indexed proposal in topic 2. 
+- The data shows the weight and proposalVotes. This voter had not been delegated any votes, so its weight is 1. Since only person has voted so far, the number of proposalVotes is 1.
 
 ```
 Address
@@ -66,7 +66,7 @@ Data
 ```
 
 ## Block: 12496620
-- 0x460f6898d317a86537e075d377125ba2509841a4 ddelegated its vote 
+- 0x460f6898d317a86537e075d377125ba2509841a4 delegated its vote 
 - 0x460f6898d317a86537e075d377125ba2509841a4 gave its vote to 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e. The address of 0x460f6898d317a86537e075d377125ba2509841a4 is given as topic 1, and 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e is given as topic 2.
 ``` 
     event Delegated(
@@ -115,5 +115,41 @@ Data
 ```
 
 ## Block: 12496623
+-  0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e voted
+-  earlier, 0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e had gotten a vote delegated to it
+-  here we see that 0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e (topic 1) voted for proposal 0 (topic 2)
+-  in the data section, we see weight = 2, and proposalVotes = 3. Since 0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e had gotten a vote delegated to it, the weight is 2 (thus reflecting the delegated vote). Also, since we also had another vote in block 12496617, and that vote had a weight of 1, now in total, we have 3 proposalVotes.
+
+```
+{
+  log: {
+    blockNumber: 12496623,
+    blockHash: '0x46418ddc99117e228affa71f46557c9f2f133dc32acb960c5ed7a81286d45dfb',
+    transactionIndex: 5,
+    removed: false,
+    address: '0x6c6Bd21c0F6b2a535F45B117f9dB1Bc843457618',
+    data: '0x00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000003',
+    topics: [
+      '0xc32b42768a47a585121e9b8d7a2ab9d3f34c326a192dee11ee1732e3d18313f3',
+      '0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e',
+      '0x0000000000000000000000000000000000000000000000000000000000000000'
+    ],
+    transactionHash: '0x3bf02f5f1a4a0aded1295752486597e01ffc09dcab7c320a5c61f778787667b5',
+    logIndex: 5
+  }
+}
+```
+```
+Address
+0x6c6bd21c0f6b2a535f45b117f9db1bc843457618
+Topics
+0 0xc32b42768a47a585121e9b8d7a2ab9d3f34c326a192dee11ee1732e3d18313f3
+1 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e
+2 0x0000000000000000000000000000000000000000000000000000000000000000
+Data
+0000000000000000000000000000000000000000000000000000000000000002
+0000000000000000000000000000000000000000000000000000000000000003
+```
 
 ## Block: 12496627
+- 0xe96cddc312433893e1001a045e448ffd789e6327 delegated its vote to 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e
