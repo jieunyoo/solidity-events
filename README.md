@@ -1,14 +1,16 @@
 # Solidity event emission
 
-See first contract with events at: [etherscan](https://ropsten.etherscan.io/address/0x6c6Bd21c0F6b2a535F45B117f9dB1Bc843457618)
+## Initial version
+- See first contract with events on ropsten test net at: [etherscan](https://ropsten.etherscan.io/address/0x6c6Bd21c0F6b2a535F45B117f9dB1Bc843457618)
+- This contract was deployed via `yarn run ts-node --files scripts/events.ts`
 
 
-## Block: 12496608
+### Block: 12496608
 - contract creation
 - the contract is at: 0x6c6Bd21c0F6b2a535F45B117f9dB1Bc843457618
 - the deployer of the contract is: 0x9f9e1b02f25fe6308c7b57e84d49d4386bb0da42
 
-## Block: 12496609
+### Block: 12496609
 - 0x9f9e1b02f25fe6308c7b57e84d49d4386bb0da42 gave the right to vote to 0x460f6898d317a86537E075D377125bA2509841a4
 - this is seen in the log where the second topic is the address that got the right to vote.
 ```
@@ -30,16 +32,16 @@ See first contract with events at: [etherscan](https://ropsten.etherscan.io/addr
 }
 ```
 
-## Block: 12496611
+### Block: 12496611
 - 0x9f9e1b02f25fe6308c7b57e84d49d4386bb0da42 gave the right to vote to 0x460f6898d317a86537E075D377125bA2509841a4
 
-## Block: 12496612
+### Block: 12496612
 - 0x9f9e1b02f25fe6308c7b57e84d49d4386bb0da42 gave the right to vote to 0x9DD99C23d8bC78bCb0a7C8914415B9b63E7EA99e
  
-## Block: 12496614
+### Block: 12496614
 - 0x9f9e1b02f25fe6308c7b57e84d49d4386bb0da42 gave the right to vote to 0xE96CddC312433893E1001A045E448FFD789e6327
 
-## Block: 12496617
+### Block: 12496617
 - 0x4a5c7b7cd0f374ce4a9f1ee00f9a331dbf4c3139 voted
 - The event "Voted" has two indexed topics (indexed voter, indexed proposal), and two unindexed topics (weight and proposalVotes).
 ```
@@ -65,7 +67,7 @@ Data
 0000000000000000000000000000000000000000000000000000000000000001
 ```
 
-## Block: 12496620
+### Block: 12496620
 - 0x460f6898d317a86537e075d377125ba2509841a4 delegated its vote 
 - 0x460f6898d317a86537e075d377125ba2509841a4 gave its vote to 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e. The address of 0x460f6898d317a86537e075d377125ba2509841a4 is given as topic 1, and 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e is given as topic 2.
 ``` 
@@ -114,7 +116,7 @@ Data
 0000000000000000000000000000000000000000000000000000000000000000
 ```
 
-## Block: 12496623
+### Block: 12496623
 -  0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e voted
 -  earlier, 0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e had gotten a vote delegated to it
 -  here we see that 0x9dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e (topic 1) voted for proposal 0 (topic 2)
@@ -151,6 +153,12 @@ Data
 0000000000000000000000000000000000000000000000000000000000000003
 ```
 
-## Block: 12496627
+### Block: 12496627
 - 0xe96cddc312433893e1001a045e448ffd789e6327 delegated its vote to 0x0000000000000000000000009dd99c23d8bc78bcb0a7c8914415b9b63e7ea99e
+
+
+## Second version 
+- A new version that logs the winner each time someone votes is located at ropsten test net [here](https://ropsten.etherscan.io/address/0xf973bd09bBc75296f084A4277aA4d8dDc5BF2B62).
+- This was deployed by `yarn run ts-ndoe --files scripts/simpleEvents.ts`
+- As seen [here](https://ropsten.etherscan.io/tx/0x8bb71803b0b85a854983769a1ba4b1e43064a7126eb435e8cfa80d31dd3180d6#eventlog), now there are two log entries - one for the Voter and one for the Winner.
 
