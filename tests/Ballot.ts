@@ -102,6 +102,18 @@ describe("Ballot", function () {
     });
   });
 
+  describe("when the voter interact with the vote function in the contract", function () {
+    it("triggers the Winner event", async function () {
+      const voterAddress = accounts[1].address;
+      await giveRightToVote(ballotContract, voterAddress);
+      await expect(ballotContract.connect(accounts[1]).vote(1))
+        .to.emit(ballotContract, "Winner")
+        .withArgs(1);
+    });
+  });
+
+
+
   describe("when the voter interact with the delegate function in the contract", function () {
     it("triggers the Delegated event", async function () {
       const voterAddress = accounts[1].address;

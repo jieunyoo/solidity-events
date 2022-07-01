@@ -20,6 +20,11 @@ contract Ballot {
         uint256 proposalVotes
     );
 
+    event Winner(
+        uint256 winningProposal   
+    );
+
+    
     struct Voter {
         uint256 weight;
         bool voted;
@@ -31,6 +36,7 @@ contract Ballot {
         bytes32 name;
         uint256 voteCount;
     }
+
 
     address public chairperson;
     mapping(address => Voter) public voters;
@@ -84,6 +90,7 @@ contract Ballot {
         sender.vote = proposal;
         proposals[proposal].voteCount += sender.weight;
         emit Voted(msg.sender, proposal, sender.weight, proposals[proposal].voteCount);
+        emit Winner(winningProposal());
     }
 
     function winningProposal() public view returns (uint256 winningProposal_) {
