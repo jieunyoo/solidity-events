@@ -94,6 +94,7 @@ contract Ballot {
                 winningProposal_ = p;
             }
         }
+        //
     }
 
     function winnerName() external view returns (bytes32 winnerName_) {

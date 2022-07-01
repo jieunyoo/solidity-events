@@ -116,6 +116,17 @@ describe("Ballot", function () {
     });
   });
 
+  describe("winnner", function() {
+    it("gives the winning proposal number", async function() {
+      const proposalIndex  = 0;
+      const tx = await ballotContract.vote(proposalIndex);
+      await tx.wait();
+      const winner = await ballotContract.winningProposal();
+      expect(winner.toNumber()).to.equal(0);
+    });
+  });
+
+
   describe("when the voter interact with the delegate function in the contract, and the delegate has other delegate", function () {
     // TODO
     it("is not implemented", async function () {
